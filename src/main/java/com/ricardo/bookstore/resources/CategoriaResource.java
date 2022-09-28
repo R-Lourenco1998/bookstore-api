@@ -44,5 +44,10 @@ public class CategoriaResource {
         return ResponseEntity.ok().body(new CategoriaDTO(newObj));
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        categoriaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
