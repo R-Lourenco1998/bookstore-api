@@ -1,4 +1,4 @@
-package com.ricardo.bookstore.services;
+package com.ricardo.bookstore.service;
 
 import com.ricardo.bookstore.domain.Categoria;
 import com.ricardo.bookstore.domain.Livro;

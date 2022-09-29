@@ -2,7 +2,7 @@ package com.ricardo.bookstore.resources;
 
 import com.ricardo.bookstore.domain.Categoria;
 import com.ricardo.bookstore.dtos.CategoriaDTO;
-import com.ricardo.bookstore.services.CategoriaService;
+import com.ricardo.bookstore.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

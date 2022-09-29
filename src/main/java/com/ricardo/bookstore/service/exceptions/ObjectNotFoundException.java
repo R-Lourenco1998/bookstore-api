@@ -1,4 +1,4 @@
-package com.ricardo.bookstore.services.exceptions;
+package com.ricardo.bookstore.service.exceptions;
 
 public class ObjectNotFoundException extends RuntimeException {
 

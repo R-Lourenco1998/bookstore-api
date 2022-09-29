@@ -1,6 +1,6 @@
 package com.ricardo.bookstore.config;
 
-import com.ricardo.bookstore.services.DBService;
+import com.ricardo.bookstore.service.DBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

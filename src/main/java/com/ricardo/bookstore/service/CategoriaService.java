@@ -1,10 +1,11 @@
-package com.ricardo.bookstore.services;
+package com.ricardo.bookstore.service;
 
 import com.ricardo.bookstore.domain.Categoria;
 import com.ricardo.bookstore.dtos.CategoriaDTO;
 import com.ricardo.bookstore.repositories.CategoriaRepository;
-import com.ricardo.bookstore.services.exceptions.ObjectNotFoundException;
+import com.ricardo.bookstore.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +41,12 @@ public class CategoriaService {
 
     public void delete(Integer id) {
         findById(id);
+        try {
         categoriaRepository.deleteById(id);
+
+        }catch (DataIntegrityViolationException e){
+            throw new com.ricardo.bookstore.service.exceptions.DataIntegrityViolationException(
+                    "Categoria não pode ser deletada! Possui livros associados. ");
+        }
     }
 }
