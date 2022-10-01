@@ -1,6 +1,7 @@
 package com.ricardo.bookstore.service;
 
 import com.ricardo.bookstore.domain.Livro;
+import com.ricardo.bookstore.dtos.LivroDTO;
 import com.ricardo.bookstore.repositories.LivroRepository;
 import com.ricardo.bookstore.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.Optional;
 public class LivroService {
 
     @Autowired
-   private LivroRepository livroRepository;
+    private LivroRepository livroRepository;
 
     @Autowired
     private CategoriaService categoriaService;
@@ -27,5 +28,17 @@ public class LivroService {
     public List<Livro> findAll(Integer id_cat) {
         categoriaService.findById(id_cat);
         return livroRepository.findAllByCategoria(id_cat);
+    }
+
+    public Livro update(Integer id, Livro obj) {
+        Livro newObj = findById(id);
+        updateData(newObj, obj);
+        return livroRepository.save(newObj);
+    }
+
+    private void updateData(Livro newObj, Livro obj) {
+        newObj.setTitulo(obj.getTitulo());
+        newObj.setNome_autor(obj.getNome_autor());
+        newObj.setTexto(obj.getTexto());
     }
 }
