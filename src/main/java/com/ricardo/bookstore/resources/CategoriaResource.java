@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public class CategoriaResource {
         return ResponseEntity.ok().body(listDto);
     }
     @PostMapping
-    public ResponseEntity<Categoria> create(@RequestBody Categoria obj){
+    public ResponseEntity<Categoria> create(@Valid @RequestBody Categoria obj){
         obj = categoriaService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
