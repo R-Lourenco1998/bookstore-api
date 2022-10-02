@@ -1,5 +1,6 @@
 package com.ricardo.bookstore.service;
 
+import com.ricardo.bookstore.domain.Categoria;
 import com.ricardo.bookstore.domain.Livro;
 import com.ricardo.bookstore.dtos.LivroDTO;
 import com.ricardo.bookstore.repositories.LivroRepository;
@@ -40,5 +41,12 @@ public class LivroService {
         newObj.setTitulo(obj.getTitulo());
         newObj.setNome_autor(obj.getNome_autor());
         newObj.setTexto(obj.getTexto());
+    }
+
+    public Livro create(Integer id_cat, Livro obj) {
+        obj.setId(null);
+        Categoria cat = categoriaService.findById(id_cat);
+        obj.setCategoria(cat);
+        return livroRepository.save(obj);
     }
 }
