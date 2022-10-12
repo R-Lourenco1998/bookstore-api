@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/categorias")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CategoriaResource {
 
     @Autowired
